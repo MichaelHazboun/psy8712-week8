@@ -11,7 +11,7 @@
 
 <meta name="author" content="Michael Hazboun" />
 
-<meta name="date" content="2024-03-15" />
+<meta name="date" content="2024-03-16" />
 
 <title>PSY 8712 Week 8 Project</title>
 
@@ -1623,7 +1623,7 @@ display: none;
 
 <h1 class="title toc-ignore">PSY 8712 Week 8 Project</h1>
 <h4 class="author">Michael Hazboun</h4>
-<h4 class="date">2024-03-15</h4>
+<h4 class="date">2024-03-16</h4>
 
 </div>
 
@@ -1633,21 +1633,14 @@ explanations for why we chose to do what we did. I used much more than
 that to start, so for the full version <a href="https://docs.google.com/document/d/1hO2VGmAc63v3pOvx9EORhB7ONFAcy36gHcczCAgYwTc/edit?usp=sharing">go
 here</a></p>
 <p><strong>Reproducible Image and Online Resources:</strong></p>
-<p>An image of this project as of <em>2024-03-15</em> can be accessed by
-<a href="link">clicking this link</a>. COME BACK AND PUT LINK An
-interactive web app is available by <a href="link">clicking this link
-instead</a>. COME BACK AND PUT LINK</p>
+<p>An image of this project as of <em>2024-03-16</em> can be accessed by
+<a href="https://notebooks.gesis.org/binder/jupyter/user/michaelhazboun-psy8712-week8-7ixv3oe7/rstudio/">clicking
+this link</a>.</p>
+<p>An interactive web app is available by <a href="https://michaelhazboun.shinyapps.io/shiny_week8/">clicking this
+link instead</a>.</p>
 <p><strong>Script Settings and Resources</strong></p>
-<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.5.0     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.2     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+library(tidyverse)</code></pre>
 <p><strong>Data Import and Cleaning</strong></p>
 <p>Imported and cleaned the data: factorized gender, reverse coded q5
 and made two new variables, the mean for Q1:6 and the mean for Q8:10. I
