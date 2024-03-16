@@ -11,12 +11,13 @@ I finished this and noticed that you wanted 1 to 2 sentence explanations for why
 
 **Reproducible Image and Online Resources:**
 
-An image of this project as of *`r Sys.Date()`* can be accessed by [clicking this link](link). COME BACK AND PUT LINK
-An interactive web app is available by [clicking this link instead](link). COME BACK AND PUT LINK
+An image of this project as of *`r Sys.Date()`* can be accessed by [clicking this link](https://notebooks.gesis.org/binder/jupyter/user/michaelhazboun-psy8712-week8-7ixv3oe7/rstudio/). 
+
+An interactive web app is available by [clicking this link instead](https://michaelhazboun.shinyapps.io/shiny_week8/). 
 
 **Script Settings and Resources**
 
-```{r Script Settings and Resources, echo=FALSE}
+```{r Script Settings and Resources, message=FALSE}
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(tidyverse)
 

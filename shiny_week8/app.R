@@ -9,8 +9,7 @@
 
 library(shiny)
 library(tidyverse) #loaded tidyverse because I'll most probably be using it
-library(rsconnect)
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) #setworking directory to file that this thing lives in
+library(rsconnect) #loaded rsconnect in attempt of deploying
 
 ui <- fluidPage(
 
@@ -54,3 +53,4 @@ server <- function(input, output) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)
+
