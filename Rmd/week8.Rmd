@@ -1,0 +1,8 @@
+---
+title: "PSY 8712 Week 8 Project"
+author: "Michael Hazboun"
+date: `r Sys.date()`
+output: html_document
+---
+**Reproducible Image and Online Resources:**
+An image of this project as of *`r Sys.date()`* can be accessed by clicking this link.
