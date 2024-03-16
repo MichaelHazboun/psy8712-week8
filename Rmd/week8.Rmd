@@ -68,5 +68,5 @@ I used saveRDS to same the file in the shiny folder and only included relevant v
 ```{r Data Export}
 week8_tbl %>%
   select(timeEnd,gender,mq1_6,mq8_10) %>%
-  saveRDS("../shiny/data.rds")
+  saveRDS("../shiny_week8/data.rds")
 ```
