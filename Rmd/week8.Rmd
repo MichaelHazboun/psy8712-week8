@@ -1,8 +1,72 @@
 ---
 title: "PSY 8712 Week 8 Project"
 author: "Michael Hazboun"
-date: `r Sys.date()`
-output: html_document
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    df_print: paged
 ---
+
+I finished this and noticed that you wanted 1 to 2 sentence explanations for why we chose to do what we did. I used much more than that to start, so for the full version [go here](https://docs.google.com/document/d/1hO2VGmAc63v3pOvx9EORhB7ONFAcy36gHcczCAgYwTc/edit?usp=sharing)
+
 **Reproducible Image and Online Resources:**
-An image of this project as of *`r Sys.date()`* can be accessed by clicking this link.
+
+An image of this project as of *`r Sys.Date()`* can be accessed by [clicking this link](link). COME BACK AND PUT LINK
+An interactive web app is available by [clicking this link instead](link). COME BACK AND PUT LINK
+
+**Script Settings and Resources**
+
+```{r Script Settings and Resources, echo=FALSE}
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+library(tidyverse)
+
+```
+
+**Data Import and Cleaning**
+
+Imported and cleaned the data: factorized gender, reverse coded q5 and made two new variables, the mean for Q1:6 and the mean for Q8:10. I didn't change anything else because I didn't want to make any assumptions on this dataset based off of our previous homeworks (we might be in a different world where q6 wasn't used as a manipulation check...)
+```{r Data Import and Cleaning}
+week8_tbl <- read_csv("../data/week3.csv", col_names = T) %>%
+  mutate(gender = factor(gender, levels=c("M","F"), labels = c("Male","Female"))) %>%
+  mutate(q5=6-q5)%>%
+  rowwise()  %>%
+  mutate(mq1_6= mean(c(q1,q2,q3,q4,q5,q6), na.rm = T)) %>%  # I tried using q1:q6, but when I was checking the responses, it wasn't right, it was giving me different answers for each line, but not the right one..
+  mutate(mq8_10= mean(c(q8,q9,q10), na.rm = T))
+
+```
+
+**Visualization**
+
+I hid the code using echo, hid the message using message and made a plot using ggplot, geom_point and geom_smooth. I used these methods because they were the easiest and most intuitive to me. 
+```{r Visualization, echo=FALSE, message=FALSE}
+week8_tbl %>%
+  select(q1:q6)
+
+week8_tbl %>%
+  ggplot(aes(x=mq1_6,y=mq8_10))+
+  geom_point() +
+  geom_smooth( method = "lm",color="purple")+
+  labs(x= "Mean of Q1 through Q6", y= "Mean of Q8 through Q10")
+
+```
+
+**Analysis**
+
+I calculated the correlation, pulled the pvalue and correlation out of the output and rounded both values with round() and removed the leading zeros with str_remove. This was the easiest way I could think of to remove the leading zeros. (Also hid the code using echo=F)
+```{r Analysis, echo=FALSE}
+wow_correlation<-cor.test(week8_tbl$mq1_6,week8_tbl$mq8_10)
+pvalue <-str_remove(round(wow_correlation$p.value,2) ,"^0")
+wow_correlation
+pretty_cor<- str_remove(round(wow_correlation$estimate,2),"^0")
+```
+
+I observed a correlation of `r pretty_cor` between the mean of questions one through six and the mean of question eight through  ten. The associated P values was rough `r pvalue`, assuming an alpha of 0.05, we fail to reject the null hypothesis, that the correlation between the means is actually 0, because the p value is larger than our alpha.
+
+**Data Export**
+
+I used saveRDS to same the file in the shiny folder and only included relevant variables.
+```{r Data Export}
+week8_tbl %>%
+  select(timeEnd,gender,mq1_6,mq8_10) %>%
+  saveRDS("../shiny/data.rds")
+```
